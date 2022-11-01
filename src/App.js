@@ -5,6 +5,8 @@ import Todos from "./MyComponents/Todos";
 import Footer from "./MyComponents/Footer";
 import AddTodo from './MyComponents/AddTodo';
 import React, { useState , useEffect } from 'react';
+import {Route,Routes} from 'react-router-dom';
+import About from './MyComponents/About';
 
 
 function App() {
@@ -51,9 +53,14 @@ function App() {
 
   return (
   <>
-    <Header title="My Todos List" searchBar={false}/>
+  <Routes>
+    <Route path='/' exact element={<>
+      <Header title="My Todos List" searchBar={false}/>
     <AddTodo addTodo={addTodo}/>
-    <Todos todos={todos} onDelete={onDelete}/>
+    <Todos todos={todos} onDelete={onDelete}/></>}></Route>
+    <Route path='/about' element={<About/>}></Route>
+    
+    </Routes>
     <Footer/>
   </>
   );
